@@ -2,6 +2,9 @@ This is a simple script that I created to get into courses that don't have wait 
 
 NOTE: This script will include restricted seats when checking to see if the courses has seats open.
 
+## Requirements
+- Python 3.X
+
 ## Instructions
 
 1. Install the required packages with:
@@ -20,3 +23,5 @@ URLS = {
 ```
 
 3. (OPTIONAL) if you want to set the interval at which is checks the courses, modify the `INTERVAL` variable. It is in minutes and I would recommend that you don't use any interval lower than 1 as it could cause your IP to get blocked.
+
+4. Run with `python script.py`
