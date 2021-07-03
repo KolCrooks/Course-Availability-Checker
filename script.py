@@ -24,7 +24,7 @@ notification.message = "..."
 def check_urls():
     for (course, url) in URLS.items():
         curl = requests.get(url)
-        soup = BeautifulSoup(curl.text, features="xml")
+        soup = BeautifulSoup(curl.text, features="lxml")
         
         contains_cnt = soup.find(text="Total Seats Remaining:").parent.next_sibling.find("strong").children
         count = int(next(contains_cnt))
