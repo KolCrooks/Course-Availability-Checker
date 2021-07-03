@@ -10,20 +10,21 @@ from termcolor import colored
 
 # SET THE COURSES THAT YOU WANT TO WATCH
 URLS = {
-    'MATH200': 'https://courses.students.ubc.ca/cs/courseschedule?pname=subjarea&tname=subj-section&dept=MATH&course=200&section=921',
-    'MATH221': 'https://courses.students.ubc.ca/cs/courseschedule?pname=subjarea&tname=subj-section&dept=MATH&course=221&section=921'
+    'STAT': 'https://courses.students.ubc.ca/cs/courseschedule?sesscd=S&pname=subjarea&tname=subj-section&course=305&sessyr=2021&section=001&dept=STAT',
 }
 
 INTERVAL = 1 # 1 minute interval
+
 
 notification = Notify()
 notification.title = "COURSE AVAILABLE"
 notification.message = "..."
 
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
 def check_urls():
     for (course, url) in URLS.items():
-        curl = requests.get(url)
+        curl = requests.get(url, headers=HEADERS)
         soup = BeautifulSoup(curl.text, features="lxml")
         
         contains_cnt = soup.find(text="Total Seats Remaining:").parent.next_sibling.find("strong").children
